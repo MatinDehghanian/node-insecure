@@ -15,7 +15,6 @@ import (
 	"github.com/matindehghanian/node-insecure/config"
 	"github.com/matindehghanian/node-insecure/tools"
 )
-
 const NodeVersion = "0.2.7"
 
 type Service interface {
