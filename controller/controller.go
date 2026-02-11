@@ -16,7 +16,7 @@ import (
 	"github.com/matindehghanian/node-insecure/tools"
 )
 
-const NodeVersion = "0.2.6"
+const NodeVersion = "0.2.7"
 
 type Service interface {
 	Disconnect()
