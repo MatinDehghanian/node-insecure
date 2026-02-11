@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"crypto/tls"
 	"fmt"
 	"log"
 	"os"
@@ -24,9 +25,14 @@ func main() {
 
 	addr := fmt.Sprintf("%s:%d", cfg.NodeHost, cfg.ServicePort)
 
-	tlsConfig, err := tools.LoadTLSCredentials(cfg.SslCertFile, cfg.SslKeyFile)
-	if err != nil {
-		log.Fatal(err)
+	var tlsConfig *tls.Config
+	if cfg.TlsEnabled {
+		tlsConfig, err = tools.LoadTLSCredentials(cfg.SslCertFile, cfg.SslKeyFile)
+		if err != nil {
+			log.Fatal(err)
+		}
+	} else {
+		log.Println("WARNING: TLS is disabled. Connection is not encrypted!")
 	}
 
 	log.Printf("Starting Node: v%s", controller.NodeVersion)

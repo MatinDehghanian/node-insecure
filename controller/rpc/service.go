@@ -28,18 +28,23 @@ func New(cfg *config.Config) *Service {
 func StartGRPCListener(tlsConfig *tls.Config, addr string, cfg *config.Config) (func(ctx context.Context) error, controller.Service, error) {
 	s := New(cfg)
 
-	creds := credentials.NewTLS(tlsConfig)
-
 	// Create the gRPC server with conditional middleware
 	// Set max message size to 64MB to handle large configs and user data
 	const maxMsgSize = 64 * 1024 * 1024 // 64MB
-	grpcServer := grpc.NewServer(
-		grpc.Creds(creds),
+
+	var serverOpts []grpc.ServerOption
+	if tlsConfig != nil {
+		creds := credentials.NewTLS(tlsConfig)
+		serverOpts = append(serverOpts, grpc.Creds(creds))
+	}
+	serverOpts = append(serverOpts,
 		grpc.MaxRecvMsgSize(maxMsgSize),
 		grpc.MaxSendMsgSize(maxMsgSize),
 		grpc.UnaryInterceptor(ConditionalMiddleware(s)),
 		grpc.StreamInterceptor(ConditionalStreamMiddleware(s)),
 	)
+
+	grpcServer := grpc.NewServer(serverOpts...)
 
 	// Register the service
 	common.RegisterNodeServiceServer(grpcServer, s)
@@ -50,7 +55,11 @@ func StartGRPCListener(tlsConfig *tls.Config, addr string, cfg *config.Config) (
 	}
 
 	go func() {
-		log.Println("gRPC Server listening on", addr)
+		if tlsConfig != nil {
+			log.Println("gRPC Server (TLS) listening on", addr)
+		} else {
+			log.Println("gRPC Server (no TLS) listening on", addr)
+		}
 		log.Println("Press Ctrl+C to stop")
 		if err = grpcServer.Serve(listener); err != nil {
 			log.Printf("gRPC server error: %v", err)

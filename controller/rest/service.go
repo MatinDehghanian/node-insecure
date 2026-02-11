@@ -5,6 +5,7 @@ import (
 	"crypto/tls"
 	"errors"
 	"log"
+	"net"
 	"net/http"
 
 	"github.com/go-chi/chi/v5"
@@ -69,14 +70,25 @@ func StartHttpListener(tlsConfig *tls.Config, addr string, cfg *config.Config) (
 		Handler:   s.Router,
 	}
 
-	// Test if we can listen on the port before starting the goroutine
-	listener, err := tls.Listen("tcp", addr, tlsConfig)
+	var listener net.Listener
+	var err error
+
+	// Use TLS listener if TLS is enabled, otherwise use plain TCP
+	if tlsConfig != nil {
+		listener, err = tls.Listen("tcp", addr, tlsConfig)
+	} else {
+		listener, err = net.Listen("tcp", addr)
+	}
 	if err != nil {
 		return nil, nil, err
 	}
 
 	go func() {
-		log.Println("HTTP Server listening on", addr)
+		if tlsConfig != nil {
+			log.Println("HTTPS Server listening on", addr)
+		} else {
+			log.Println("HTTP Server (no TLS) listening on", addr)
+		}
 		log.Println("Press Ctrl+C to stop")
 		if err := httpServer.Serve(listener); err != nil && !errors.Is(err, http.ErrServerClosed) {
 			log.Printf("HTTP server error: %v", err)

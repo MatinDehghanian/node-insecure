@@ -22,6 +22,7 @@ type Config struct {
 	Debug               bool
 	GeneratedConfigPath string
 	LogBufferSize       int
+	TlsEnabled          bool
 }
 
 func Load() (*Config, error) {
@@ -40,6 +41,7 @@ func Load() (*Config, error) {
 		ServiceProtocol:     GetEnv("SERVICE_PROTOCOL", "grpc"),
 		Debug:               GetEnvAsBool("DEBUG", false),
 		LogBufferSize:       GetEnvAsInt("LOG_BUFFER_SIZE", 1000),
+		TlsEnabled:          GetEnvAsBool("TLS_ENABLED", true),
 	}
 
 	cfg.ApiKey, err = GetEnvAsUUID("API_KEY")
