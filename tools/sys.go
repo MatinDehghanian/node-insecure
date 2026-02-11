@@ -7,7 +7,7 @@ import (
 	"github.com/shirou/gopsutil/v4/mem"
 	"github.com/shirou/gopsutil/v4/net"
 
-	"github.com/pasarguard/node/common"
+	"github.com/matindehghanian/node-insecure/common"
 )
 
 func GetSystemStats() (*common.SystemStatsResponse, error) {

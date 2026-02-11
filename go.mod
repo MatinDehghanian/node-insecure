@@ -1,4 +1,4 @@
-module github.com/pasarguard/node
+module github.com/matindehghanian/node-insecure
 
 go 1.25.7
 

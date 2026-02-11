@@ -11,8 +11,8 @@ import (
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 
-	"github.com/pasarguard/node/config"
-	"github.com/pasarguard/node/controller"
+	"github.com/matindehghanian/node-insecure/config"
+	"github.com/matindehghanian/node-insecure/controller"
 )
 
 func New(cfg *config.Config) *Service {

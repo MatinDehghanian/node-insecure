@@ -11,8 +11,8 @@ import (
 
 	"google.golang.org/protobuf/proto"
 
-	"github.com/pasarguard/node/common"
-	"github.com/pasarguard/node/controller"
+	"github.com/matindehghanian/node-insecure/common"
+	"github.com/matindehghanian/node-insecure/controller"
 )
 
 func (s *Service) SyncUser(w http.ResponseWriter, r *http.Request) {

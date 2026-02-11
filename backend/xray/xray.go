@@ -8,10 +8,10 @@ import (
 	"sync"
 	"time"
 
-	"github.com/pasarguard/node/backend"
-	"github.com/pasarguard/node/backend/xray/api"
-	"github.com/pasarguard/node/common"
-	"github.com/pasarguard/node/config"
+	"github.com/matindehghanian/node-insecure/backend"
+	"github.com/matindehghanian/node-insecure/backend/xray/api"
+	"github.com/matindehghanian/node-insecure/common"
+	"github.com/matindehghanian/node-insecure/config"
 )
 
 type Xray struct {

@@ -6,7 +6,7 @@ import (
 	"io"
 	"regexp"
 
-	nodeLogger "github.com/pasarguard/node/logger"
+	nodeLogger "github.com/matindehghanian/node-insecure/logger"
 )
 
 var (

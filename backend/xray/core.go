@@ -14,7 +14,7 @@ import (
 	"sync"
 	"time"
 
-	nodeLogger "github.com/pasarguard/node/logger"
+	nodeLogger "github.com/matindehghanian/node-insecure/logger"
 )
 
 type Core struct {

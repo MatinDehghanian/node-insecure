@@ -10,11 +10,11 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/pasarguard/node/config"
-	"github.com/pasarguard/node/controller"
-	"github.com/pasarguard/node/controller/rest"
-	"github.com/pasarguard/node/controller/rpc"
-	"github.com/pasarguard/node/tools"
+	"github.com/matindehghanian/node-insecure/config"
+	"github.com/matindehghanian/node-insecure/controller"
+	"github.com/matindehghanian/node-insecure/controller/rest"
+	"github.com/matindehghanian/node-insecure/controller/rpc"
+	"github.com/matindehghanian/node-insecure/tools"
 )
 
 func main() {

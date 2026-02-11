@@ -16,7 +16,7 @@ RUN GOOS=${TARGETOS} GOARCH=${TARGETARCH} make install_xray
 
 FROM alpine:latest
 
-LABEL org.opencontainers.image.source="https://github.com/PasarGuard/node"
+LABEL org.opencontainers.image.source="https://github.com/MatinDehghanian/node-insecure"
 
 WORKDIR /app
 COPY --from=builder /src /app

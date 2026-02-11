@@ -7,9 +7,9 @@ import (
 	"log"
 	"net"
 
-	"github.com/pasarguard/node/common"
-	"github.com/pasarguard/node/config"
-	"github.com/pasarguard/node/controller"
+	"github.com/matindehghanian/node-insecure/common"
+	"github.com/matindehghanian/node-insecure/config"
+	"github.com/matindehghanian/node-insecure/controller"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
 )

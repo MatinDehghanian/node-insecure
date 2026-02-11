@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package service;
 
-option go_package = "github.com/pasarguard/node/common";
+option go_package = "github.com/matindehghanian/node-insecure/common";
 
 message Empty {}
 

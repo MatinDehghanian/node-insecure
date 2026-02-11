@@ -9,7 +9,7 @@ import (
 	"github.com/xtls/xray-core/proxy/vless"
 	"github.com/xtls/xray-core/proxy/vmess"
 
-	"github.com/pasarguard/node/common"
+	"github.com/matindehghanian/node-insecure/common"
 )
 
 type Account interface {

@@ -8,8 +8,8 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/pasarguard/node/backend/xray/api"
-	"github.com/pasarguard/node/common"
+	"github.com/matindehghanian/node-insecure/backend/xray/api"
+	"github.com/matindehghanian/node-insecure/common"
 
 	"github.com/xtls/xray-core/infra/conf"
 )

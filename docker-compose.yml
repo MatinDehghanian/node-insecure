@@ -1,8 +1,8 @@
 services:
   node:
-    image: pasarguard/node:latest
+    image: matindehghanian/node-insecure:latest
     # for situations, you don't have access to docker hub use 👇
-    # image: ghcr.io/pasarguard/node:latest
+    # image: ghcr.io/matindehghanian/node-insecure:latest
     restart: always
     network_mode: host
 
