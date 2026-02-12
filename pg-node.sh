@@ -68,7 +68,7 @@ SSL_KEY_FILE="$DATA_DIR/certs/ssl_key.pem"
 LAST_XRAY_CORES=5
 FETCH_REPO="MatinDehghanian/node-insecure"
 SCRIPT_URL="https://github.com/$FETCH_REPO/raw/main/pg-node.sh"
-NODE_SERVICE_REPO="MatinDehghanian/node-insecure-serviced"
+NODE_SERVICE_REPO="MatinDehghanian/node-serviced-insecure"
 NODE_SERVICE_RELEASE_API="https://api.github.com/repos/${NODE_SERVICE_REPO}/releases/latest"
 NODE_SERVICE_BINARY_NAME="node-serviced"
 colorized_echo() {
