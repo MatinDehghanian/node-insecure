@@ -40,6 +40,7 @@ COMMAND="$1"
 # Fetch IP address from ifconfig.io API
 NODE_IP_V4=$(curl -s -4 --fail --max-time 5 ifconfig.io 2>/dev/null || echo "")
 NODE_IP_V6=$(curl -s -6 --fail --max-time 5 ifconfig.io 2>/dev/null || echo "")
+NODE_IP="${NODE_IP_V4:-$NODE_IP_V6}"
 if [[ "$1" == "install" || "$1" == "install-script" ]] && [ -z "$APP_NAME" ]; then
     APP_NAME="pg-node"
 fi
@@ -1004,8 +1005,12 @@ install_command() {
     fi
     colorized_echo blue "================================"
     colorized_echo magenta " node is set up with the following IP: $NODE_IP and Port: $SERVICE_PORT."
-    colorized_echo magenta "Please use the following Certificate in pasarguard Panel (it's located in ${DATA_DIR}/certs):"
-    cat "$SSL_CERT_FILE"
+    if [ "$TLS_ENABLED" -eq 1 ] && [ -f "$SSL_CERT_FILE" ]; then
+        colorized_echo magenta "Please use the following Certificate in pasarguard Panel (it's located in ${DATA_DIR}/certs):"
+        cat "$SSL_CERT_FILE"
+    else
+        colorized_echo yellow "TLS is disabled. No certificate was generated."
+    fi
     colorized_echo blue "================================"
     colorized_echo magenta "Next, use the API Key (UUID v4) in pasarguard Panel: "
     colorized_echo red "${API_KEY}"
