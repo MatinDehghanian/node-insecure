@@ -1,7 +1,7 @@
 services:
   node:
     container_name: node
-    image: matindehghanian/node-insecure:latest
+    image: matindehghanian/node-insecure:main
     restart: always
     network_mode: host
     env_file: .env

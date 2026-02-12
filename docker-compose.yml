@@ -1,8 +1,8 @@
 services:
   node:
-    image: matindehghanian/node-insecure:latest
+    image: matindehghanian/node-insecure:main
     # for situations, you don't have access to docker hub use 👇
-    # image: ghcr.io/matindehghanian/node-insecure:latest
+    # image: ghcr.io/matindehghanian/node-insecure:main
     restart: always
     network_mode: host
 
